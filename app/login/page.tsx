@@ -2,11 +2,12 @@
 import Logo from "@/components/logo";
 import Image from "next/image";
 import login from "../../public/login.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { useRouter } from "next/navigation";
 import { LoginDetails } from "@/types/type";
 import { hashPassword } from "@/utils/helper";
+import { ClipLoader } from "react-spinners";
 
 function Login() {
   const router = useRouter();
@@ -14,12 +15,18 @@ function Login() {
     email: "",
     password: "",
   });
+  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
 
   const [user, setUser] = useLocalStorageState<LoginDetails>(details, "user");
-  console.log(user);
+
+  useEffect(()=>{
+    // to prevent another login
+    if(user) router.push("/dashboard")
+  },[user])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoggingIn(true);
 
     const hashedPassword = await hashPassword(details.password);
 
@@ -28,8 +35,10 @@ function Login() {
       password: hashedPassword,
     };
 
+    setTimeout(() => {
     setUser(newUser);
     router.push("/dashboard");
+  }, 800); 
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,9 +54,15 @@ function Login() {
     <div className="loginContainer">
       {/* logoContainer  */}
       <div className="logoContainer">
-        <Logo />
+        <Logo classname="login-logo"/>
 
-        <Image src={login} alt="lendsqr login image" width={100} height={100} />
+        <div className="logoImage">
+          <Image
+            src={login}
+            alt="lendsqr login image"
+           fill
+          />
+        </div>
       </div>
 
       {/* formContainer  */}
@@ -80,8 +95,8 @@ function Login() {
 
             <p>Forgot password?</p>
 
-            <button type="submit" disabled={isEmpty}>
-              Log in
+            <button type="submit" disabled={isLoggingIn || isEmpty}>
+            {isLoggingIn ? <ClipLoader size={20} color="#fff" loading={isLoggingIn} /> : "Login"}
             </button>
           </form>
         </div>

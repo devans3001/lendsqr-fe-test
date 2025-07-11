@@ -1,53 +1,42 @@
 .loginContainer {
   width: 100dvw;
-  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
+  flex-direction: column;
 }
 .loginContainer .logoContainer {
-  position: relative;
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-.loginContainer .logoContainer .login-logo {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  display: flex;
-  gap: 5;
-}
-.loginContainer .logoContainer .login-logo h2 {
-  color: #213f7d;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: none;
 }
 .loginContainer .formContainer {
-  width: 50%;
-  background-color: rgba(84, 95, 125, 0.1490196078);
+  width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
+  padding: 2rem 1.5rem;
 }
 .loginContainer .formContainer .formContent {
   font-family: "Avenir Next Regular";
-  width: 70%;
+  width: 100%;
+  max-width: 450px;
 }
 .loginContainer .formContainer .formContent h1 {
   color: #213f7d;
   font-family: "Work Sans Bold";
+  font-size: 1.5rem;
 }
 .loginContainer .formContainer .formContent > p {
   margin: 1em 0;
   font-weight: 100;
+  font-size: 0.9rem;
 }
 .loginContainer .formContainer .formContent form {
-  margin-top: 2em;
+  margin-top: 1.5em;
   padding: 0.5em;
   display: flex;
   flex-direction: column;
-  gap: 10;
+  gap: 1rem;
 }
 .loginContainer .formContainer .formContent form label {
   width: 100%;
@@ -65,15 +54,16 @@
 }
 .loginContainer .formContainer .formContent form input {
   width: 100%;
-  padding: 1em;
+  padding: 0.8em;
   background-color: transparent;
   border-radius: 5px;
   outline: none;
   border: 2px solid rgba(84, 95, 125, 0.1490196078);
+  font-size: 0.9rem;
 }
 .loginContainer .formContainer .formContent form > p {
   font-size: 0.7em;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #39CDCC;
   text-transform: uppercase;
 }
@@ -85,11 +75,71 @@
   border: none;
   color: #fff;
   cursor: pointer;
-  letter-spacing: 3px;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
 }
 
-.left {
-  color: red;
+@media (min-width: 768px) {
+  .loginContainer {
+    flex-direction: row;
+  }
+  .loginContainer .logoContainer {
+    display: block;
+    position: relative;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+  }
+  .loginContainer .logoContainer .login-logo {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    display: flex;
+    gap: 5px;
+  }
+  .loginContainer .logoContainer .logoImage {
+    position: relative;
+    width: 50%;
+    height: 50%;
+  }
+  .loginContainer .logoContainer .logoImage img {
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .loginContainer .formContainer {
+    width: 50%;
+    padding: 0;
+    box-shadow: -12px 0 16px -8px rgba(84, 95, 125, 0.15);
+  }
+  .loginContainer .formContainer .formContent {
+    width: 70%;
+  }
+  .loginContainer .formContainer .formContent h1 {
+    font-size: 2rem;
+  }
+  .loginContainer .formContainer .formContent > p {
+    font-size: 1rem;
+  }
+  .loginContainer .formContainer .formContent form {
+    gap: 1.5rem;
+  }
+  .loginContainer .formContainer .formContent form input {
+    padding: 1em;
+  }
+  .loginContainer .formContainer .formContent form button {
+    letter-spacing: 3px;
+  }
+}
+.navContainer {
+  display: flex;
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 1.5em;
+  background: rgb(255, 255, 255);
+  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
 }
 
 * {
@@ -102,4 +152,13 @@
 
 body {
   width: 100%;
+}
+
+.logo {
+  display: flex;
+  gap: 5;
+}
+.logo h2 {
+  color: #213f7d;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }/*# sourceMappingURL=main.css.map */

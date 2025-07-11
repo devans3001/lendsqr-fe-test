@@ -1,24 +1,9 @@
-"use client";
+import React from 'react'
 
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { useAuth } from "@/hooks/useAuth";
-import Logout from "@/components/auth/logout";
-
-
-function Dashboard() {
-  const router = useRouter();
-
-const {user,isAuthenticated} = useAuth()
-  console.log(user)
-
-  useEffect(() => {
-    // If user is not found, redirect to login
-    if (!isAuthenticated) {
-      router.push("/login");
-    }
-  }, [isAuthenticated]);
-  return <div><Logout/></div>;
+function DashboardPage() {
+  return (
+    <div>DashboardPage</div>
+  )
 }
 
-export default Dashboard;
+export default DashboardPage

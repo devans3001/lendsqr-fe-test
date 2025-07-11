@@ -1,15 +1,24 @@
-
-
+@use "base/variables";
 @import "layouts/loginlayout";
+@import "components/navbar";
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
 }
 
-body{
-    width: 100%;
+body {
+  width: 100%;
+}
+
+.logo {
+    display: flex;
+    gap: 5;
+  h2 {
+    color: variables.$lendsqrBlueSecondary;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
 }
