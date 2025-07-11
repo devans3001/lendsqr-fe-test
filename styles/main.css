@@ -1,0 +1,105 @@
+.loginContainer {
+  width: 100dvw;
+  height: 100dvh;
+  display: flex;
+}
+.loginContainer .logoContainer {
+  position: relative;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.loginContainer .logoContainer .login-logo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  display: flex;
+  gap: 5;
+}
+.loginContainer .logoContainer .login-logo h2 {
+  color: #213f7d;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.loginContainer .formContainer {
+  width: 50%;
+  background-color: rgba(84, 95, 125, 0.1490196078);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.loginContainer .formContainer .formContent {
+  font-family: "Avenir Next Regular";
+  width: 70%;
+}
+.loginContainer .formContainer .formContent h1 {
+  color: #213f7d;
+  font-family: "Work Sans Bold";
+}
+.loginContainer .formContainer .formContent > p {
+  margin: 1em 0;
+  font-weight: 100;
+}
+.loginContainer .formContainer .formContent form {
+  margin-top: 2em;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 10;
+}
+.loginContainer .formContainer .formContent form label {
+  width: 100%;
+  position: relative;
+}
+.loginContainer .formContainer .formContent form label span {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  transform: translate(4%, -50%);
+  color: #39CDCC;
+}
+.loginContainer .formContainer .formContent form input {
+  width: 100%;
+  padding: 1em;
+  background-color: transparent;
+  border-radius: 5px;
+  outline: none;
+  border: 2px solid rgba(84, 95, 125, 0.1490196078);
+}
+.loginContainer .formContainer .formContent form > p {
+  font-size: 0.7em;
+  letter-spacing: 2px;
+  color: #39CDCC;
+  text-transform: uppercase;
+}
+.loginContainer .formContainer .formContent form button {
+  text-transform: uppercase;
+  padding: 0.8em;
+  border-radius: 8px;
+  background-color: #39CDCC;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 3px;
+}
+
+.left {
+  color: red;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+body {
+  width: 100%;
+}/*# sourceMappingURL=main.css.map */

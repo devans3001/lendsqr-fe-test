@@ -1,0 +1,17 @@
+
+
+@font-face {
+  font-family: 'Work Sans Bold';
+  src: url('../public/fonts/WorkSans-Bold.ttf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir Next Regular';
+  src: url('../public/fonts/Avenir-Next-LT-Pro-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
