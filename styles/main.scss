@@ -1,6 +1,8 @@
 @use "base/variables";
 @import "layouts/loginlayout";
 @import "components/navbar";
+@import "components/lastchild";
+@import "components/searchbar";
 
 * {
   margin: 0;
@@ -12,6 +14,11 @@
 
 body {
   width: 100%;
+}
+
+button{
+    border: none;
+    outline: none;
 }
 
 .logo {

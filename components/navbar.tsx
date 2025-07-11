@@ -1,14 +1,17 @@
 
 "use client"
 
-import Logout from "./auth/logout"
+import Lastchild from "./lastchild"
 import Logo from "./logo"
+import Searchbar from "./searchbar"
 
 function Navbar() {
   return (
     <nav className="navContainer">
 
-        <Logo/>
+        <Logo classname="nav-logo"/>
+        <Searchbar/>
+        <Lastchild/>
     </nav>
   )
 }

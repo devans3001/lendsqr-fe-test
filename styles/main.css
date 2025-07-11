@@ -133,13 +133,60 @@
   }
 }
 .navContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-areas: " nav-logo nav-logo . . searchBar searchBar searchBar searchBar . . . ending ending ending";
   position: sticky;
   top: 0;
   left: 0;
   padding: 1.5em;
   background: rgb(255, 255, 255);
   box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+}
+
+.nav-logo {
+  grid-area: nav-logo;
+}
+
+.ending {
+  grid-area: ending;
+  justify-self: end;
+  gap: 10;
+  display: flex;
+  align-items: center;
+  color: #213f7d;
+  font-family: "Work Sans Regular";
+}
+.ending p:first-child {
+  text-decoration: underline;
+}
+
+.searchBar {
+  grid-area: searchBar;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-direction: row;
+}
+.searchBar input {
+  width: 100%;
+  border: 1px solid rgba(33, 64, 125, 0.2941176471);
+  border-right: none;
+  font-size: 0.9rem;
+  padding: 0.7em;
+  background-color: transparent;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
+}
+.searchBar input:focus {
+  outline: none;
+}
+.searchBar button {
+  padding: 0 1.3em;
+  height: 100%;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
+  background: #39cdcc;
 }
 
 * {
@@ -152,6 +199,11 @@
 
 body {
   width: 100%;
+}
+
+button {
+  border: none;
+  outline: none;
 }
 
 .logo {

@@ -1,0 +1,18 @@
+
+@use "../base/variables";
+
+.ending {
+  grid-area: ending;
+  justify-self: end;
+gap: 10;
+  display: flex;
+  align-items: center;
+color: variables.$lendsqrBlueSecondary;
+  font-family: "Work Sans Regular";
+
+   p:first-child{
+    text-decoration: underline;
+  }
+
+  
+}
