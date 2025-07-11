@@ -8,8 +8,6 @@ import { useRouter } from "next/navigation";
 import { LoginDetails } from "@/types/type";
 import { hashPassword } from "@/utils/helper";
 
-
-
 function Login() {
   const router = useRouter();
   const [details, setDetails] = useState<LoginDetails>({
@@ -18,8 +16,9 @@ function Login() {
   });
 
   const [user, setUser] = useLocalStorageState<LoginDetails>(details, "user");
+  console.log(user);
 
- const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const hashedPassword = await hashPassword(details.password);

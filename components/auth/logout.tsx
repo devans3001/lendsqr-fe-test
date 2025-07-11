@@ -10,7 +10,7 @@ function Logout() {
    const router = useRouter();
    const [isLoading,setIsloading] = useState<boolean>(false)
   const [user, setUser] = useLocalStorageState<LoginDetails | null>(null, "user");
-
+console.log(user )
 
   const handleLogout = () => {
   setIsloading(true);
