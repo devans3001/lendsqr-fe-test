@@ -15,7 +15,14 @@
     min-height: 100vh;
     // border: 2px solid variables.$loginBackground;
     @include variables.flex;
+    position: relative;
     padding: 2rem 1.5rem;
+
+    .login-logo{
+         position: absolute;
+        top: 5%;
+        left: 5%;
+      }
 
     .formContent {
       font-family: "Avenir Next Regular";
@@ -107,8 +114,6 @@
         left: 10%;
         display: flex;
         gap: 5px;
-
-       
       }
 
       .logoImage {
@@ -127,6 +132,7 @@
       padding: 0;
       box-shadow: -12px 0 16px -8px rgba(84, 95, 125, 0.15);
 
+      
       .formContent {
         width: 70%;
 

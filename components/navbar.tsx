@@ -1,19 +1,21 @@
+"use client";
 
-"use client"
+import UserNavWidget from "./userNavWidget";
+import Logo from "./logo";
+import Searchbar from "./searchbar";
+import { RefObject } from "react";
 
-import Lastchild from "./lastchild"
-import Logo from "./logo"
-import Searchbar from "./searchbar"
 
-function Navbar() {
+function Navbar({navRef}:{navRef:RefObject<HTMLElement | null>}) {
+ 
+
   return (
-    <nav className="navContainer">
-
-        <Logo classname="nav-logo"/>
-        <Searchbar/>
-        <Lastchild/>
+    <nav className="navContainer" ref={navRef}>
+      <Logo classname="nav-logo" />
+      <Searchbar />
+      <UserNavWidget />
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

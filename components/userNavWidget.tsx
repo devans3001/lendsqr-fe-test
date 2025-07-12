@@ -8,7 +8,7 @@ import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { LoginDetails } from "@/types/type";
 import { useEffect, useState } from "react";
 
-function Lastchild() {
+function UserNavWidget() {
   const [user] = useLocalStorageState<LoginDetails | null>(null, "user");
 
   const [name,setName] = useState<string>("")
@@ -44,4 +44,4 @@ function Lastchild() {
   );
 }
 
-export default Lastchild;
+export default UserNavWidget;

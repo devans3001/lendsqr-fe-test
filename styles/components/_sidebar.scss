@@ -1,0 +1,29 @@
+@use "../base/variables";
+
+.sideContainer {
+  background: #fff;
+  box-shadow: 0px 5px 20px 0px #0000000a;
+  padding: 1.5em 0;
+  font-family: "Work Sans Regular";
+  overflow: hidden;
+  scrollbar-width: none;
+}
+
+/* Show scrollbar on hover */
+.sideContainer:hover {
+  overflow: auto;
+}
+
+.sideItem {
+
+  text-transform: capitalize;
+  @include variables.flex(row, start);
+  gap: 1em;
+  padding: 1em 1em 1em 1em;
+  color: variables.$lendsqrBlueSecondary;
+}
+
+.sideActive {
+  border-left: 3px solid variables.$lendsqrGreen;
+  background-color: #39cdcd1d;
+}

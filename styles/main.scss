@@ -1,8 +1,11 @@
 @use "base/variables";
+@import "base/loading";
+@import "base/notfound";
 @import "layouts/loginlayout";
 @import "components/navbar";
-@import "components/lastchild";
+@import "components/usernavwidget";
 @import "components/searchbar";
+@import "components/sidebar";
 
 * {
   margin: 0;

@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect } from "react";
+import { ReactNode, useEffect,useLayoutEffect, useRef, useState } from "react";
 import style from "./dashboard.module.css"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
@@ -11,19 +11,31 @@ import Sidebar from "@/components/sidebar";
 function DashboardLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
 
-  const { user, isAuthenticated } = useAuth();
-  console.log(user);
+  const {  isAuthenticated } = useAuth();
+  // console.log(user);
+
+   const navRef = useRef<HTMLElement | null>(null);
+    const [navbarHeight, setNavbarHeight] = useState<number>(0);
+  
+    useLayoutEffect(() => {
+      if (navRef.current) {
+        setNavbarHeight(navRef.current.offsetHeight);
+      }
+    }, []);
 
   useEffect(() => {
     if (!isAuthenticated) {
       router.push("/login");
     }
+
+    if(isAuthenticated) router.push("/dashboard/users")
   }, [isAuthenticated]);
+
   return (
     <div className={style.container}>
-      <Navbar />
+      <Navbar navRef={navRef} />
       <div className={style.main}>
-        <Sidebar />
+        <Sidebar navbarHeight={navbarHeight}/>
         <main>{children}</main>
       </div>
     </div>
