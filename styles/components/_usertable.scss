@@ -1,0 +1,43 @@
+.userTableWrapper {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+//   margin: 2em 0;
+}
+
+.userTableTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.userTableHead th {
+  text-align: left;
+  padding: 1em 0.75em;
+  color: #545f7d;
+  font-weight: 600;
+}
+
+.userTableBody td {
+  padding: 1em 0.75em;
+  border-top: 1px solid #f0f0f0;
+  color: #545f7d;
+}
+
+.userTableBody tr:hover {
+  background: #f9f9f9;
+}
+
+.userTableEmpty {
+  padding: 1.5em;
+  font-size: 0.95rem;
+  color: #888;
+}

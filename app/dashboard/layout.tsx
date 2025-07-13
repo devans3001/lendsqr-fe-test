@@ -4,9 +4,9 @@ import { ReactNode, useEffect,useLayoutEffect, useRef, useState } from "react";
 import style from "./dashboard.module.css"
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
-import Logout from "@/components/auth/logout";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
+import { useViewport } from "@/hooks/useViewport";
 
 function DashboardLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -16,6 +16,8 @@ function DashboardLayout({ children }: { children: ReactNode }) {
 
    const navRef = useRef<HTMLElement | null>(null);
     const [navbarHeight, setNavbarHeight] = useState<number>(0);
+
+    const {width} = useViewport()
   
     useLayoutEffect(() => {
       if (navRef.current) {
@@ -39,8 +41,11 @@ function DashboardLayout({ children }: { children: ReactNode }) {
     <div className={style.container}>
       <Navbar navRef={navRef} />
       <div className={style.section}>
-        <Sidebar navbarHeight={navbarHeight}/>
-        <main style={mainStyle}>{children}</main>
+       {width >= 1100 && <Sidebar navbarHeight={navbarHeight}/>}
+
+        <main style={mainStyle}>
+          {children}
+          </main>
       </div>
     </div>
   );

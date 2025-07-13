@@ -6,6 +6,7 @@
 @import "components/usernavwidget";
 @import "components/searchbar";
 @import "components/sidebar";
+@import "components/usertable";
 
 * {
   margin: 0;
@@ -17,6 +18,7 @@
 
 body {
   width: 100%;
+  overflow: hidden;
 }
 
 button{

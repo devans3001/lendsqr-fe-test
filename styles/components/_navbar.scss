@@ -1,18 +1,39 @@
+.navContainer {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-areas: " nav-logo nav-logo . . searchBar searchBar searchBar searchBar . . . ending ending ending";
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding: 1.5em;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
 
-.navContainer{
-    display: grid;
-    grid-template-columns: repeat(14,1fr);
-    grid-template-areas: 
-    " nav-logo nav-logo . . searchBar searchBar searchBar searchBar . . . ending ending ending"
-    ;
-    position: sticky;
-    top: 0;
-    left: 0;
-    padding: 1.5em;
-    background: rgba(255, 255, 255, 1);
-    box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
+  svg{
+    cursor: pointer;
+  }
+
+  @media (max-width: 1100px) {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+  }
+  @media (max-width: 768px) {
+    
+    gap: 1.5em;
+  }
+  @media (max-width: 640px) {
+    
+    gap: 1em;
+  }
 }
 
-.nav-logo{
-    grid-area: nav-logo;
+.nav-logo {
+  grid-area: nav-logo;
+  @media (max-width: 1100px) {
+  //   .nav-hide {
+      display: none !important;
+  //   }
+  }
 }
+

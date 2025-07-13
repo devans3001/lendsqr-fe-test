@@ -262,9 +262,34 @@
   background: rgb(255, 255, 255);
   box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
 }
+.navContainer svg {
+  cursor: pointer;
+}
+@media (max-width: 1100px) {
+  .navContainer {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+  }
+}
+@media (max-width: 768px) {
+  .navContainer {
+    gap: 1.5em;
+  }
+}
+@media (max-width: 640px) {
+  .navContainer {
+    gap: 1em;
+  }
+}
 
 .nav-logo {
   grid-area: nav-logo;
+}
+@media (max-width: 1100px) {
+  .nav-logo {
+    display: none !important;
+  }
 }
 
 .ending {
@@ -278,6 +303,30 @@
 }
 .ending p:first-child {
   text-decoration: underline;
+}
+.ending .iconShow {
+  display: none;
+}
+@media (max-width: 1100px) {
+  .ending {
+    gap: 0.5em;
+  }
+  .ending .iconHide,
+  .ending .textHide,
+  .ending img {
+    display: none;
+  }
+  .ending .iconShow {
+    display: block;
+  }
+}
+@media (max-width: 768px) {
+  .ending p {
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 .searchBar {
@@ -302,10 +351,15 @@
 }
 .searchBar button {
   padding: 0 1.3em;
-  height: 100%;
+  align-self: stretch;
   border-bottom-right-radius: 8px;
   border-top-right-radius: 8px;
   background: #39cdcc;
+}
+@media (max-width: 1100px) {
+  .searchBar {
+    flex: 1;
+  }
 }
 
 .sideContainer {
@@ -338,6 +392,49 @@
   background-color: rgba(57, 205, 205, 0.1137254902);
 }
 
+.userTableWrapper {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1.5em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow-x: auto;
+}
+
+.userTableTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.userTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.userTableHead th {
+  text-align: left;
+  padding: 1em 0.75em;
+  color: #545f7d;
+  font-weight: 600;
+}
+
+.userTableBody td {
+  padding: 1em 0.75em;
+  border-top: 1px solid #f0f0f0;
+  color: #545f7d;
+}
+
+.userTableBody tr:hover {
+  background: #f9f9f9;
+}
+
+.userTableEmpty {
+  padding: 1.5em;
+  font-size: 0.95rem;
+  color: #888;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -348,6 +445,7 @@
 
 body {
   width: 100%;
+  overflow: hidden;
 }
 
 button {

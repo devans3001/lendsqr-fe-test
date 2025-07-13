@@ -7,6 +7,8 @@ import { initials } from "@dicebear/collection";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { LoginDetails } from "@/types/type";
 import { useEffect, useState } from "react";
+import { IoGrid } from "react-icons/io5";
+import { HiOutlineDotsVertical } from "react-icons/hi";
 
 function UserNavWidget() {
   const [user] = useLocalStorageState<LoginDetails | null>(null, "user");
@@ -27,8 +29,8 @@ function UserNavWidget() {
   const dataUrl = `data:image/svg+xml,${encodeURIComponent(svg)}`;
   return (
     <div className="ending">
-      <p>Docs</p>
-      <FaRegBell size={20} color="#213F7D" />
+      <p className="textHide">Docs</p>
+      <FaRegBell size={20} color="#213F7D" className="iconHide"/>
 
       <Image
         src={dataUrl}
@@ -39,7 +41,10 @@ function UserNavWidget() {
       <p>
         {name.split("@")[0] || "User"}
       </p>
-      <MdArrowDropDown/>
+      <IoGrid className="iconShow"/>
+      <HiOutlineDotsVertical className="iconShow"/>
+      
+      <MdArrowDropDown className="iconHide"/>
     </div>
   );
 }

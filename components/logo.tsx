@@ -4,7 +4,7 @@ import logo from "../public/logo.png";
 
 function Logo({classname}:{classname?:string}) {
   return (
-    <div className={`${classname} logo`}>
+    <div className={`logo ${classname} `}>
       <Image src={logo} alt="lendsqr logo" width={30} height={30} />
 
       <h2>lendsqr</h2>

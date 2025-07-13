@@ -6,24 +6,44 @@
 
 h1{
     font-size: 1.3em;
+    color: #213f7d;
+    font-family: 'Work Sans SemiBold'
 }
 }
 
 .userCards {
-  display: flex;
-  justify-content: space-around;
+   display: flex;
+   justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
   width: 100%;
+  max-width: 1400px; /* Prevents overly wide layouts */
+  margin: 0 auto;
 }
 
 .card {
-  box-shadow: 3px 5px 20px 0px #0000000a;
+  flex: 1 1 calc(25% - 0.75em); 
+//   max-width: calc(25% - 0.75em);
+  min-width: 250px;
+  box-shadow: 3px 5px 20px #0000000a;
   border-radius: 4px;
   padding: 2em;
-  width: 22%;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
+  background: #fff;
+
+  @media (max-width: 1100px) {
+    flex: 1 1 calc(33.333% - 0.75em); // 3 per row
+    // max-width: calc(33.333% - 0.75em);
+  }
+
+  @media (max-width: 900px) {
+    flex: 1 1 calc(50% - 0.5em); // 2 per row
+    // max-width: calc(50% - 0.5em);
+  }
+
+  @media (max-width: 600px) {
+    flex: 1 1 100%; // full width
+    max-width: 100%;
+  }
 
   p {
     width: 40px;

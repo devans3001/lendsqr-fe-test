@@ -1,3 +1,4 @@
+"use client";
 import UserCard from "@/components/card";
 
 import style from "./users.module.css";
@@ -6,6 +7,8 @@ import { UserCardType } from "@/types/type";
 import { HiMiniUsers } from "react-icons/hi2";
 import { TbFileDatabase } from "react-icons/tb";
 import { LiaCoinsSolid } from "react-icons/lia";
+import UserTable from "@/components/UserTable";
+import { MdFilterList } from "react-icons/md";
 
 const cards: UserCardType[] = [
   {
@@ -38,6 +41,27 @@ const cards: UserCardType[] = [
   },
 ];
 
+const tableHeaders = [
+  "Organization",
+  "Username",
+  "Email",
+  "Phone Number",
+  "Date Joined",
+  "Status",
+  "",
+];
+
+const dummyData = [
+  {
+    org: "Lendsqr",
+    name: "Adedeji",
+    email: "adedeji@lendsqr.com",
+    phone: "08078030721",
+    joined: "May 15, 2020 10:00 AM",
+    status: "Inactive",
+  },
+];
+
 function User() {
   return (
     <div className={style.container}>
@@ -47,6 +71,22 @@ function User() {
           <UserCard key={card.title} card={card} />
         ))}
       </div>
+
+      {/* <UserTable>
+        <UserTable.Header
+          data={tableHeaders}
+          render={(item, i) => {
+            const isLast = i === tableHeaders.length - 1;
+
+
+            return (
+              <th key={item}>
+                {item}{!isLast && <MdFilterList />}{" "}
+              </th>
+            );
+          }}
+        />
+      </UserTable> */}
     </div>
   );
 }
