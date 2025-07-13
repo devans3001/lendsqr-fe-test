@@ -7,3 +7,8 @@ export async function hashPassword(password: string): Promise<string> {
   const hashed = hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
   return hashed;
 }
+
+
+export const formatNumberWithCommas = (num: number): string => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

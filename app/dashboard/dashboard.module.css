@@ -1,3 +1,12 @@
-.main {
+.section {
   display: flex;
+}
+.section main {
+  padding: 2em;
+  font-family: "Work Sans Regular";
+  background: #FBFBFB;
+  flex: 1;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: blue green;
 }/*# sourceMappingURL=dashboard.module.css.map */

@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+//   justify-content: space-between;
+
+h1{
+    font-size: 1.3em;
+}
+}
+
+.userCards {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.card {
+  box-shadow: 3px 5px 20px 0px #0000000a;
+  border-radius: 4px;
+  padding: 2em;
+  width: 22%;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  p {
+    width: 40px;
+    height: 40px;
+    // padding: 1em;
+    // background:rgba(87, 24, 255, 0.10);
+    // width: fit-content;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  span {
+    text-transform: uppercase;
+    color: #545f7d;
+    font-size: small;
+  }
+  h3 {
+    font-family: "Work Sans SemiBold";
+    font-size: 1.5em;
+    color: #213f7d;
+  }
+}

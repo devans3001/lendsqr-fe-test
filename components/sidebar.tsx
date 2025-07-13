@@ -3,10 +3,11 @@ import React from "react";
 import { MdArrowDropDown } from "react-icons/md";
 import { RiBriefcase2Fill } from "react-icons/ri";
 import { BsHouseDoor } from "react-icons/bs";
-import { MenuItem, sideMenu } from "./sidebarData";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logout from "./auth/logout";
+import { sideMenu } from "@/utils/sidebarData";
+import { MenuItem } from "@/types/type";
 
 function Sidebar({ navbarHeight }: { navbarHeight: number }) {
   const pathname = usePathname();

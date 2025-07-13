@@ -6,6 +6,19 @@
 
 }
 
-.main{
+.section{
     display: flex;
+
+    main{
+        padding: 2em;
+        font-family: "Work Sans Regular";
+        // width: 100%;
+        background: #FBFBFB;
+        // background-color: red;
+        flex: 1;
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: blue green;
+
+    }
 }

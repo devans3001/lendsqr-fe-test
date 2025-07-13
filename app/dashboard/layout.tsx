@@ -31,12 +31,16 @@ function DashboardLayout({ children }: { children: ReactNode }) {
     if(isAuthenticated) router.push("/dashboard/users")
   }, [isAuthenticated]);
 
+  const mainStyle = {
+    height: `calc(100vh - ${navbarHeight}px)`,
+  };
+
   return (
     <div className={style.container}>
       <Navbar navRef={navRef} />
-      <div className={style.main}>
+      <div className={style.section}>
         <Sidebar navbarHeight={navbarHeight}/>
-        <main>{children}</main>
+        <main style={mainStyle}>{children}</main>
       </div>
     </div>
   );

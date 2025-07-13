@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { MenuItem } from "@/types/type";
 import { AiOutlineBank } from "react-icons/ai";
 import {
     FaClipboardList,
@@ -21,14 +21,6 @@ import { LuScroll } from "react-icons/lu";
 import { PiFanDuotone } from "react-icons/pi";
 import { RiBriefcase2Fill } from "react-icons/ri";
 
-export interface MenuItem {
-  title: string;
-  subItems?: {
-      title: string;
-      icon: IconType;
-      path?: string | undefined;
-  }[];
-}
 
 export const sideMenu: MenuItem[] = [
   {
