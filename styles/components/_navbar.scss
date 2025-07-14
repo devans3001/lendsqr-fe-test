@@ -9,21 +9,24 @@
   background: rgba(255, 255, 255, 1);
   box-shadow: 3px 0px 20px 0px rgba(0, 0, 0, 0.04);
 
-  svg{
-    cursor: pointer;
+  > svg {
+    display: none;
   }
 
   @media (max-width: 1100px) {
     display: flex;
     align-items: center;
     gap: 3em;
+
+    > svg {
+      cursor: pointer;
+      display: block;
+    }
   }
   @media (max-width: 768px) {
-    
     gap: 1.5em;
   }
   @media (max-width: 640px) {
-    
     gap: 1em;
   }
 }
@@ -31,9 +34,8 @@
 .nav-logo {
   grid-area: nav-logo;
   @media (max-width: 1100px) {
-  //   .nav-hide {
-      display: none !important;
-  //   }
+    //   .nav-hide {
+    display: none !important;
+    //   }
   }
 }
-

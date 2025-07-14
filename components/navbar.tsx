@@ -13,7 +13,7 @@ function Navbar({navRef}:{navRef:RefObject<HTMLElement | null>}) {
   return (
     <nav className="navContainer" ref={navRef}>
       <Logo classname="nav-logo nav-hide" />
-      <IoMenu size={20} color="#213F7D"/>
+      <IoMenu size={24} color="#213F7D"/>
       <Searchbar />
       <UserNavWidget />
     </nav>

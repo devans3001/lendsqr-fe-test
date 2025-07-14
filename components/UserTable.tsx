@@ -1,4 +1,3 @@
-
 "use client";
 
 import { createContext, useContext, ReactNode } from "react";
@@ -11,11 +10,9 @@ const UserTableContext = createContext<TableContextType | undefined>(undefined);
 
 export default function UserTable({
   title,
-  rows,
   children,
 }: {
   title?: string | undefined;
-  rows?:number
   children: ReactNode;
 }) {
   return (
@@ -37,7 +34,7 @@ function Header<T>({
   render,
 }: {
   data: T[];
-  render: (item: T, i:number) => ReactNode;
+  render: (item: T, i: number) => ReactNode;
 }) {
   return (
     <thead className="userTableHead">
@@ -51,25 +48,27 @@ function Body<T>({
   render,
 }: {
   data: T[];
-  render: (item: T, index: number) => ReactNode;
+  render: (user: T) => ReactNode;
 }) {
-  if (!data.length) return <p className="userTableEmpty">No data to show at the moment</p>;
+  if (!data.length)
+    return <p className="userTableEmpty">No data to show at the moment</p>;
 
   return <tbody className="userTableBody">{data.map(render)}</tbody>;
 }
 
 function Row({ children }: { children: ReactNode }) {
-  return <tr>{children}</tr>;
+  return <tr className="">{children}</tr>;
 }
+
 
 UserTable.Header = Header;
 UserTable.Body = Body;
 UserTable.Row = Row;
 
+export function useUserTable() {
+  const context = useContext(UserTableContext);
 
-export function useUserTable(){
-    const context = useContext(UserTableContext)
-
-    if(!context) throw new Error("UserTable Provider isn't in the correct location")
-    return context
+  if (!context)
+    throw new Error("UserTable Provider isn't in the correct location");
+  return context;
 }

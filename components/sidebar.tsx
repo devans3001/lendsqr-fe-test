@@ -52,7 +52,7 @@ function SideItem({ item, pathname }: { item: MenuItem; pathname: string }) {
           href={`/dashboard${ele.path}`}
           key={ele.title}
           className={`sideItem ${
-            pathname.endsWith((ele.path ?? "").slice(0)) ? "sideActive" : ""
+            pathname.includes((ele.path ?? "").slice(0)) ? "sideActive" : ""
           } `}
         >
           <ele.icon />
