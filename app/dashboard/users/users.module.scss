@@ -2,18 +2,18 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
-//   justify-content: space-between;
+  //   justify-content: space-between;
 
-h1{
+  h1 {
     font-size: 1.3em;
     color: #213f7d;
-    font-family: 'Work Sans SemiBold'
-}
+    font-family: "Work Sans SemiBold";
+  }
 }
 
 .userCards {
-   display: flex;
-   justify-content: center;
+  display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 1em;
   width: 100%;
@@ -22,8 +22,8 @@ h1{
 }
 
 .card {
-  flex: 1 1 calc(25% - 0.75em); 
-//   max-width: calc(25% - 0.75em);
+  flex: 1 1 calc(25% - 0.75em);
+  //   max-width: calc(25% - 0.75em);
   min-width: 200px;
   box-shadow: 3px 5px 20px #0000000a;
   border-radius: 4px;
@@ -51,7 +51,7 @@ h1{
     // padding: 1em;
     // background:rgba(87, 24, 255, 0.10);
     // width: fit-content;
-    border-radius: 50px;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import style from "./logout.module.css";
 import { ClipLoader } from "react-spinners";
+import { toast } from "react-toast";
 
 function Logout() {
   const router = useRouter();
@@ -21,6 +22,7 @@ function Logout() {
 
     setTimeout(() => {
       setUser(null);
+      toast.success("Logged out Successfully 😐")
       router.push("/login");
     }, 800);
   };

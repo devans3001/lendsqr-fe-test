@@ -8,13 +8,25 @@ import { StatusBadge } from "./StatusBadge";
 import { FiEye } from "react-icons/fi";
 import { FaUserCheck, FaUserTimes } from "react-icons/fa";
 import { useRouter } from "next/navigation";
+import { useLocalStorageState } from "@/hooks/useLocalStorage";
 
 function UserTableRow({ user }: { user: UserTableValueType }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  
+  const {id, ...rest} = user
 
   const router = useRouter()
 
+  const [value,setValue] = useLocalStorageState<UserTableValueType | null>(null, `selectedUser`)
+
+  
+  
+  const handleClick = ()=>{
+    setValue(user)
+    setOpen(false)
+    router.push(`/dashboard/users/${id}`)
+  }
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -25,13 +37,7 @@ function UserTableRow({ user }: { user: UserTableValueType }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const {id, ...rest} = user
-
-  const handleClick = ()=>{
-    router.push(`/dashboard/users/${id}`)
-  }
-
+  
 
   return (
     <UserTable.Row>
