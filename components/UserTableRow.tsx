@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import UserTable from "./UserTable";
-import { UserTableValueType } from "@/types/type";
+import { User } from "@/types/type";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { STATUS_STYLES } from "@/utils/data";
 import { StatusBadge } from "./StatusBadge";
@@ -10,15 +10,15 @@ import { FaUserCheck, FaUserTimes } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
 
-function UserTableRow({ user }: { user: UserTableValueType }) {
+function UserTableRow({ user }: { user: User }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   
-  const {id, ...rest} = user
+  const {id,tableData} = user
 
   const router = useRouter()
 
-  const [value,setValue] = useLocalStorageState<UserTableValueType | null>(null, `selectedUser`)
+  const [,setValue] = useLocalStorageState<User | null>(null, `selectedUser`)
 
   
   
@@ -41,9 +41,9 @@ function UserTableRow({ user }: { user: UserTableValueType }) {
 
   return (
     <UserTable.Row>
-      {Object.keys(rest).map((key) => {
+      {Object.keys(tableData).map((key) => {
         if (key === "status") {
-          const userStatus = user[
+          const userStatus = tableData[
             key
           ].toLowerCase() as keyof typeof STATUS_STYLES;
 
@@ -55,7 +55,7 @@ function UserTableRow({ user }: { user: UserTableValueType }) {
         }
         return (
           <td key={key}>
-            {user[key as keyof UserTableValueType] as React.ReactNode}
+            {tableData[key as keyof typeof tableData]}
           </td>
         );
       })}

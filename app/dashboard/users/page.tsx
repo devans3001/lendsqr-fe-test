@@ -34,7 +34,7 @@ function User() {
           />
           <UserTable.Body
             data={dummyData}
-            render={(user) => <UserTableRow key={user.name} user={user} />}
+            render={(user) => <UserTableRow key={user.id} user={user} />}
           />
         </UserTable>
       </div>

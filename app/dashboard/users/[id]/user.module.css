@@ -75,6 +75,13 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+.container > section .skeleton {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr);
+  gap: 2em;
+  align-items: center;
+  text-align: center;
+}
 .container > section .basicInfo {
   display: flex;
   flex-direction: column;
@@ -83,7 +90,7 @@
   gap: 1rem;
   text-align: center;
 }
-.container > section .basicInfo > span {
+.container > section .basicInfo > p {
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -114,12 +121,10 @@
 }
 .container > section .basicInfo .name {
   border-right: none;
-  border-bottom: 1px solid rgba(33, 63, 125, 0.16);
   padding-bottom: 1rem;
 }
 .container > section .basicInfo .money {
   border-left: none;
-  border-top: 1px solid rgba(33, 63, 125, 0.16);
   padding-top: 1rem;
 }
 .container > section .basicInfo .star h1 {
@@ -149,12 +154,15 @@
     padding: 1.5rem 1.5rem 0;
     gap: 2rem;
   }
+  .container > section .skeleton {
+    grid-template-columns: repeat(4, 1fr);
+  }
   .container > section .basicInfo {
     flex-direction: row;
     gap: 2rem;
     text-align: left;
   }
-  .container > section .basicInfo > span {
+  .container > section .basicInfo > p {
     padding: 1.3rem;
   }
   .container > section .basicInfo .name,
@@ -197,7 +205,7 @@
 .container .profileSummary section h2 {
   font-size: 16px;
   font-family: "Work Sans Medium";
-  color: #213F7D;
+  color: #213f7d;
 }
 .container .profileSummary section:not(:last-of-type) {
   border-bottom: 1px solid rgba(33, 63, 125, 0.16);
@@ -207,9 +215,12 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
 }
+.container .infoGrid.border:not(:last-of-type) {
+  border-bottom: 1px solid rgba(33, 63, 125, 0.16);
+}
 .container .infoItem {
   padding: 1rem;
-  color: #545F7D;
+  color: #545f7d;
 }
 .container .infoItem .label {
   font-size: 12px;

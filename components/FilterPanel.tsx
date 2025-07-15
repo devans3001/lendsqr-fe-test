@@ -6,7 +6,7 @@ import { FiX } from "react-icons/fi";
 interface FilterPanelProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
-  onFilter: (data: UserTableValueType) => void;
+  onFilter?: (data: UserTableValueType) => void;
 }
 
 const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {

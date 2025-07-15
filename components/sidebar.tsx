@@ -9,14 +9,14 @@ import Logout from "./auth/logout";
 import { sideMenu } from "@/utils/sidebarData";
 import { MenuItem } from "@/types/type";
 
-function Sidebar({ navbarHeight }: { navbarHeight: number }) {
+function Sidebar({ navbarHeight,className }: { navbarHeight: number;className?:string }) {
   const pathname = usePathname();
 
   const sidebarStyle = {
     height: `calc(100vh - ${navbarHeight}px)`,
   };
   return (
-    <div className="sideContainer" style={sidebarStyle}>
+    <div className={`sideContainer ${className}`} style={sidebarStyle}>
       <p className="sideItem">
         <RiBriefcase2Fill />
         <span>switch organization</span>

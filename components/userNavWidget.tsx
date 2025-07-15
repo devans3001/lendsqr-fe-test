@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { IoGrid } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
 import Avatar from "./Avatar";
+import Skeleton from "react-loading-skeleton";
 
 function UserNavWidget() {
   const [user] = useLocalStorageState<LoginDetails | null>(null, "user");
@@ -23,9 +24,9 @@ function UserNavWidget() {
     <div className="ending">
       <p className="textHide">Docs</p>
       <FaRegBell size={20} color="#213F7D" className="iconHide" />
-      <Avatar seed={name} />
+      {!name ? <Skeleton height={40} width={40} circle/>:<Avatar seed={name} />}
 
-      <p>{name.split("@")[0] || "User"}</p>
+      <p>{name.split("@")[0] || <Skeleton height={20} width={75} />}</p>
       <IoGrid className="iconShow" />
       <HiOutlineDotsVertical className="iconShow" />
 

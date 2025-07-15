@@ -6,7 +6,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "@/hooks/useAuth";
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
-import { useViewport } from "@/hooks/useViewport";
+import { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 function DashboardLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -17,7 +18,6 @@ function DashboardLayout({ children }: { children: ReactNode }) {
    const navRef = useRef<HTMLElement | null>(null);
     const [navbarHeight, setNavbarHeight] = useState<number>(0);
 
-    const {width} = useViewport()
   
     useLayoutEffect(() => {
       if (navRef.current) {
@@ -38,16 +38,20 @@ function DashboardLayout({ children }: { children: ReactNode }) {
   };
 
   return (
+    <SkeletonTheme highlightColor="#39cdcd57" >
+
     <div className={style.container}>
       <Navbar navRef={navRef} />
       <div className={style.section}>
-       {width >= 1100 && <Sidebar navbarHeight={navbarHeight}/>}
+      <Sidebar navbarHeight={navbarHeight} className="sideHide"/>
 
         <main style={mainStyle}>
+          
           {children}
           </main>
       </div>
     </div>
+    </SkeletonTheme>
   );
 }
 

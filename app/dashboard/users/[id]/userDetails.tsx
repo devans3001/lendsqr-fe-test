@@ -3,8 +3,12 @@ import StarRating from "@/components/StarRating";
 import { formatToNaira } from "@/utils/helper";
 import style from "./user.module.css";
 import { useSearchParamsHook } from "@/hooks/useSearchParamHook";
+import { User } from "@/types/type";
+import Skeleton from "react-loading-skeleton";
 
-function UserDetails() {
+function UserDetails({ user }: { user: User | null }) {
+
+
   const { getParam, setParam } = useSearchParamsHook();
 
   const tab = getParam("tabs") || "general-details";
@@ -21,15 +25,27 @@ function UserDetails() {
     "Bank Details",
     "App and System",
   ];
+
+  if(!user) return <section>
+    <div className={style.skeleton}>
+      <Skeleton height={"50px"} width={"50px"} circle={true}/>
+      <Skeleton height={30}/>
+      <Skeleton height={30}/>
+      <Skeleton height={30}/>
+    </div>
+  </section>
+
+
+  const {tableData} = user
   return (
     <section>
       <div className={style.basicInfo}>
-        <span>
+        <p>
           <LuUserRound size={26} />
-        </span>
+        </p>
 
         <div className={style.name}>
-          <h1>Evans DIegbe</h1>
+          <h1>{tableData.name}</h1>
           <span>LSQFf587g90</span>
         </div>
         <div className={style.star}>
@@ -40,7 +56,7 @@ function UserDetails() {
         </div>
         <div className={style.money}>
           <h1>{formatToNaira(200000, "NGN", 2)}</h1>
-          <span>Evans DIegbe</span>
+          <span>9912345678/Providus Bank</span>
         </div>
       </div>
 
