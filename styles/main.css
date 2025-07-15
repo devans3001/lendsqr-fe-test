@@ -366,20 +366,73 @@
   }
 }
 
+/* ===============================
+   Desktop Sidebar Container
+   =============================== */
 .sideContainer {
   background: #fff;
   box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.0392156863);
   padding: 1.5em 0;
   font-family: "Work Sans Regular";
-  overflow: hidden;
+  overflow-y: auto;
   scrollbar-width: none;
 }
-
-/* Show scrollbar on hover */
-.sideContainer:hover {
-  overflow: auto;
+@media (max-width: 1100px) {
+  .sideContainer {
+    display: none;
+  }
 }
 
+/* ===============================
+   Slide Panel for Mobile
+   =============================== */
+.side_panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  background: white;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  font-family: "Work Sans Regular";
+  width: 85%;
+  min-width: 260px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+@media (min-width: 768px) {
+  .side_panel {
+    width: 50%;
+    min-width: 300px;
+  }
+}
+@media (min-width: 1024px) {
+  .side_panel {
+    width: 40%;
+    min-width: 350px;
+    max-width: 400px;
+  }
+}
+.side_panel--open {
+  transform: translateX(0);
+}
+.side_panel--logo {
+  margin: 2em 1em 1em;
+}
+.side_panel--close {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  cursor: pointer;
+}
+
+/* ===============================
+   Sidebar Items
+   =============================== */
 .sideItem {
   text-transform: capitalize;
   display: flex;
@@ -387,8 +440,12 @@
   align-items: center;
   flex-direction: row;
   gap: 1em;
-  padding: 1em 1em 1em 1em;
+  padding: 1em;
   color: #213f7d;
+  transition: background 0.2s ease;
+}
+.sideItem:hover {
+  background: #f9f9f9;
 }
 
 .sideActive {
@@ -396,18 +453,11 @@
   background-color: rgba(57, 205, 205, 0.1137254902);
 }
 
-@media (max-width: 1100px) {
-  .sideHide {
-    display: none;
-  }
-}
 .filter-panel {
   position: fixed;
   top: 0;
   right: 0;
   height: 100dvh;
-  width: 30%;
-  min-width: 300px;
   background: white;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   z-index: 100;
@@ -415,27 +465,25 @@
   transition: transform 0.3s ease-out;
   display: flex;
   flex-direction: column;
+  font-family: "Work Sans Regular";
+  width: 85%;
+  min-width: 260px;
+}
+@media (min-width: 768px) {
+  .filter-panel {
+    width: 50%;
+    min-width: 300px;
+  }
+}
+@media (min-width: 1024px) {
+  .filter-panel {
+    width: 40%;
+    min-width: 350px;
+    max-width: 400px;
+  }
 }
 .filter-panel--open {
   transform: translateX(0);
-}
-.filter-panel__overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  -webkit-backdrop-filter: blur(3px);
-          backdrop-filter: blur(3px);
-  z-index: 99;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-}
-.filter-panel__overlay--active {
-  opacity: 1;
-  pointer-events: all;
 }
 .filter-panel__header {
   display: flex;
@@ -683,4 +731,23 @@ button {
 .logo h2 {
   color: #213f7d;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.panel_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  z-index: 99;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.panel_overlay--active {
+  opacity: 1;
+  pointer-events: all;
 }/*# sourceMappingURL=main.css.map */

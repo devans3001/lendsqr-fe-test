@@ -1,3 +1,4 @@
+import { useClickOutside } from "@/hooks/useOnClickOutside";
 import { UserTableValueType } from "@/types/type";
 import { useRef, useEffect } from "react";
 import { useForm } from "react-hook-form";
@@ -23,23 +24,8 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
 
   const panelRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        panelRef.current &&
-        !panelRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
 
-    if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen]);
+  useClickOutside(panelRef,()=> setIsOpen(false))
 
   const handleReset = () => {
     reset();
@@ -63,8 +49,8 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
       </button> */}
 
       <div
-        className={`filter-panel__overlay ${
-          isOpen ? "filter-panel__overlay--active" : ""
+        className={`panel_overlay ${
+          isOpen ? "panel_overlay--active" : ""
         }`}
       />
 

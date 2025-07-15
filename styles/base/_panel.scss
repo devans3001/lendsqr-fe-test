@@ -1,0 +1,38 @@
+
+
+@mixin slide-panel($direction: left) {
+  position: fixed;
+  top: 0;
+  #{$direction}: 0;
+  height: 100dvh;
+  background: white;
+  box-shadow: if($direction == left, 2px 0 10px rgba(0, 0, 0, 0.1), -2px 0 10px rgba(0, 0, 0, 0.1));
+  z-index: 100;
+  transform: translateX(if($direction == left, -100%, 100%));
+  transition: transform 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  font-family: "Work Sans Regular";
+
+
+  // Mobile (default)
+  width: 85%;
+  min-width: 260px;
+
+  // Tablet (768px and up)
+  @media (min-width: 768px) {
+    width: 50%;
+    min-width: 300px;
+  }
+
+  // Desktop (1024px and up)
+  @media (min-width: 1024px) {
+    width: 40%;
+    min-width: 350px;
+    max-width: 400px;
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+}
