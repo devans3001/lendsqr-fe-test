@@ -8,7 +8,6 @@ import Navbar from "@/components/navbar";
 import Sidebar from "@/components/sidebar";
 import { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
-import SidebarMobile from "@/components/sidebarmobile";
 
 function DashboardLayout({ children }: { children: ReactNode }) {
   const router = useRouter();
@@ -46,17 +45,14 @@ console.log(isSidebarOpen)
     <div className={style.container}>
       <Navbar navRef={navRef} setIsSidebarOpen={setIsSidebarOpen}/>
       <div className={style.section}>
-  {/* Desktop sidebar */}
      <Sidebar heightStyle={heightStyle} />
 
 
-      {/* Mobile sidebar */}
       <Sidebar
         isMobile
         isOpen={isSidebarOpen}
         setIsOpen={setIsSidebarOpen}
       />
-      {/* <SidebarMobile isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen}/> */}
 
         <main style={heightStyle}>
           

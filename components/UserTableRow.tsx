@@ -9,24 +9,23 @@ import { FiEye } from "react-icons/fi";
 import { FaUserCheck, FaUserTimes } from "react-icons/fa";
 import { useRouter } from "next/navigation";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
+import { format } from "date-fns";
 
 function UserTableRow({ user }: { user: User }) {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  
-  const {id,tableData} = user
 
-  const router = useRouter()
+  const { id, tableData } = user;
 
-  const [,setValue] = useLocalStorageState<User | null>(null, `selectedUser`)
+  const router = useRouter();
 
-  
-  
-  const handleClick = ()=>{
-    setValue(user)
-    setOpen(false)
-    router.push(`/dashboard/users/${id}`)
-  }
+  const [, setValue] = useLocalStorageState<User | null>(null, `selectedUser`);
+
+  const handleClick = () => {
+    setValue(user);
+    setOpen(false);
+    router.push(`/dashboard/users/${id}`);
+  };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
@@ -37,7 +36,6 @@ function UserTableRow({ user }: { user: User }) {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-  
 
   return (
     <UserTable.Row>
@@ -53,11 +51,14 @@ function UserTableRow({ user }: { user: User }) {
             </td>
           );
         }
-        return (
-          <td key={key}>
-            {tableData[key as keyof typeof tableData]}
-          </td>
-        );
+
+        // Format if it's a date field and value is a valid ISO string
+        if (key === "date") {
+          return (
+            <td key={key}>{format(tableData[key], "MMM d, yyyy, h:mm a")}</td>
+          );
+        }
+        return <td key={key}>{tableData[key as keyof typeof tableData]}</td>;
       })}
       <td>
         <div className="row-actions-wrapper" ref={menuRef}>

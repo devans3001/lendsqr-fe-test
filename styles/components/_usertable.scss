@@ -5,6 +5,7 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   overflow-x: scroll;
   scrollbar-width: none;
+  height: 70dvh;
   //   margin: 2em 0;
 
   @media (max-width: 768px) {
@@ -53,8 +54,12 @@
 
 .userTableBody td {
   padding: 1em 0.75em;
-  border-bottom: 1px solid #f0f0f0;
   color: #545f7d;
+  
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #f0f0f0;
+
+  }
 
   svg{
     cursor: pointer;

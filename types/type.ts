@@ -31,6 +31,8 @@ export interface UserTableValueType {
 
 export interface User{
   id: string;
+  hasLoan: boolean;
+  hasSavings: boolean;
   tableData: UserTableValueType;
   profile: {
     fullName: string;

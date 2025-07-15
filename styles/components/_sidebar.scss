@@ -1,9 +1,7 @@
 @use "../base/variables";
 @use "../base/panel";
 
-/* ===============================
-   Desktop Sidebar Container
-   =============================== */
+
 
 .sideContainer {
   background: #fff;
@@ -19,9 +17,7 @@
   }
 }
 
-/* ===============================
-   Slide Panel for Mobile
-   =============================== */
+
 
 .side_panel {
   @include panel.slide-panel(left);
@@ -40,9 +36,6 @@
   }
 }
 
-/* ===============================
-   Sidebar Items
-   =============================== */
 
 .sideItem {
   text-transform: capitalize;

@@ -1,6 +1,6 @@
 import { useClickOutside } from "@/hooks/useOnClickOutside";
 import { UserTableValueType } from "@/types/type";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { useForm } from "react-hook-form";
 import { FiX } from "react-icons/fi";
 
@@ -24,15 +24,14 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
 
   const panelRef = useRef<HTMLDivElement>(null);
 
-
-  useClickOutside(panelRef,()=> setIsOpen(false))
+  useClickOutside(panelRef, () => setIsOpen(false));
 
   const handleReset = () => {
     reset();
   };
 
   const submitFilter = (data: UserTableValueType) => {
-    // onFilter(data);
+    if (onFilter) onFilter(data);
 
     // console.log("from",data)
     setIsOpen(false);
@@ -49,9 +48,7 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
       </button> */}
 
       <div
-        className={`panel_overlay ${
-          isOpen ? "panel_overlay--active" : ""
-        }`}
+        className={`panel_overlay ${isOpen ? "panel_overlay--active" : ""}`}
       />
 
       <div
@@ -77,8 +74,14 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
               <label>Organization</label>
               <select {...register("organization")}>
                 <option value="">Select</option>
-                <option value="lendstar">Lendstar</option>
-                <option value="irorun">Irorun</option>
+                {["Irorun", "Lendstar", "Opay", "Palmpay", "Lapo"].map(
+                  (ele) => (
+                    <option value={ele.toLowerCase()} key={ele}>
+                      {ele}
+                    </option>
+                  )
+                )}
+                {/* <option value="irorun">Irorun</option> */}
               </select>
             </div>
 

@@ -53,7 +53,7 @@ function Body<T>({
   if (!data.length)
     return <p className="userTableEmpty">No data to show at the moment</p>;
 
-  return <tbody className="userTableBody">{data.map(render)}</tbody>;
+  return <tbody className="userTableBody">{data?.map(render)}</tbody>;
 }
 
 function Row({ children }: { children: ReactNode }) {

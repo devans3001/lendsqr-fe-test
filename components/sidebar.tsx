@@ -33,7 +33,6 @@ export default function Sidebar({
 
   return (
     <>
-      {/* Overlay only for mobile */}
       {isMobile && (
         <div
           className={`panel_overlay ${

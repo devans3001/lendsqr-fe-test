@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./fonts.css";
 import "@/styles/main.css";
-
-
+import { Providers } from "./provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,8 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={``}>
-
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

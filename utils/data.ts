@@ -49,6 +49,8 @@ export const tableHeaders = [
 export const dummyData: User[] = [
   {
     id: "1",
+    hasLoan:true,
+    hasSavings:true,
     tableData: {
       organization: "Lendsqr",
       name: "Adedeji",
@@ -120,10 +122,3 @@ export const STATUS_STYLES = {
     code: "#E4033B",
   },
 };
-
-export const guarantorInfo = [
-  { label: "Full Name", value: "Debby Ogana" },
-  { label: "Phone Number", value: "07060780922" },
-  { label: "Email Address", value: "debby@gmail.com" },
-  { label: "Relationship", value: "Sister" },
-];
