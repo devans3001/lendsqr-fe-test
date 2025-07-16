@@ -33,9 +33,13 @@
     padding: 1em 0.75em;
     color: #545f7d;
     font-weight: 600;
+    cursor: pointer;
     // display: flex;
     //  align-items: center;
     // gap: 4px;
+     &:hover{
+    background: #f9f9f9;
+  }
 
     div {
       display: flex;
@@ -60,6 +64,8 @@
     border-bottom: 1px solid #f0f0f0;
 
   }
+
+ 
 
   svg{
     cursor: pointer;

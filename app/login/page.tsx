@@ -25,7 +25,7 @@ function Login() {
 
   useEffect(() => {
     // to prevent another login
-    if (user) router.push("/dashboard");
+    if (user) router.push("/dashboard/users");
   }, [user]);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -41,9 +41,9 @@ function Login() {
 
     setTimeout(() => {
       setUser(newUser);
-      toast.success("Welcom back 😁")
-      router.push("/dashboard");
+      router.push("/dashboard/users");
     }, 800);
+    toast.success("Welcom back 😁")
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

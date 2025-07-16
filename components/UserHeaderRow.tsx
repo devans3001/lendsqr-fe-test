@@ -5,15 +5,16 @@ interface UserHeaderRowProps {
   item: string;
   i: number;
   onFilterClick: () => void;
+  onSortClick: () => void;
 }
 
-function UserHeaderRow({ item, i, onFilterClick }: UserHeaderRowProps) {
+function UserHeaderRow({ item, i, onFilterClick,onSortClick }: UserHeaderRowProps) {
   const isLast = i === tableHeaders.length - 1;
 
   return (
     <th>
       <div>
-        <span>{item}</span>
+        <span  onClick={onSortClick}>{item}</span>
         {!isLast && <MdFilterList size={20} onClick={onFilterClick} />}
       </div>
     </th>

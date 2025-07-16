@@ -13,43 +13,32 @@ import { getUserCards } from "@/utils/getUserCards";
 import { UserTableValueType } from "@/types/type";
 import { filterUsers } from "@/utils/filterUser";
 import UsersSkeleton from "./UsersSkeleton";
+import { sortUsers } from "@/utils/sortUser";
+import { useSearchParamsHook } from "@/hooks/useSearchParamHook";
+
 
 function User() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [filters, setFilters] = useState<Partial<UserTableValueType>>({});
   const { users, isPending } = useUser();
 
-//   const filteredUsers = users.filter((user) => {
-//   if (filters.organization && user.tableData.organization.toLocaleLowerCase() !== filters.organization) {
-//     return false;
-//   }
-//   if (filters.name && !user.tableData.name.toLowerCase().includes(filters.name.toLowerCase())) {
-//     return false;
-//   }
-//   if (filters.email && !user.tableData.email.toLowerCase().includes(filters.email.toLowerCase())) {
-//     return false;
-//   }
-//   if (filters.phone && !user.tableData.phone.includes(filters.phone)) {
-//     return false;
-//   }
-//   if (filters.date && user.tableData.date !== filters.date) {
-//     return false;
-//   }
-//   if (filters.status && user.tableData.status !== filters.status) {
-//     return false;
-//   }
-//   return true;
-// });
-
-const filteredUsers = filterUsers(users, filters);
-console.log(filters)
-
+  const filteredUsers = filterUsers(users,filters)
 
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);
 
+const { getParam, setParam,setMultipleParams } = useSearchParamsHook();
 
-  const totalUsers = filteredUsers?.length || 0;
+// console.log(params)
+
+const sortKey = getParam("sortKey");
+const sortOrder = (getParam("sortOrder") as "asc" | "desc") || "asc";
+
+
+const sortedUsers = sortUsers(filteredUsers,sortKey,sortOrder)
+// console.log(sortedUsers)
+
+  const totalUsers = sortedUsers?.length || 0;
   const totalPages = Math.ceil(totalUsers / pageSize);
 
   useEffect(() => {
@@ -57,6 +46,17 @@ console.log(filters)
       setPage(1);
     }
   }, [pageSize, totalPages, page]);
+
+const handleSort = (key: string) => {
+
+  console.log(key,sortKey)
+  if (sortKey === key) {
+    setParam("sortOrder", sortOrder === "asc" ? "desc" : "asc");
+  } else {
+  setMultipleParams({ sortKey: key, sortOrder: "asc" });
+  }
+};
+
 
   // if (!data) return <p>no data</p>;
 
@@ -66,9 +66,10 @@ console.log(filters)
 
   const startIdx = (page - 1) * pageSize;
   const endIdx = startIdx + pageSize;
-  const paginatedUsers = filteredUsers.slice(startIdx, endIdx);
+  const paginatedUsers = sortedUsers.slice(startIdx, endIdx);
 
   const cards = getUserCards(filteredUsers || []);
+
   return (
     <>
       <div className={style.container}>
@@ -88,8 +89,10 @@ console.log(filters)
                 item={item}
                 i={i}
                 onFilterClick={() => setIsFilterOpen(true)}
+                 onSortClick={() => handleSort(item)}
               />
             )}
+            
           />
 
           <UserTable.Body
