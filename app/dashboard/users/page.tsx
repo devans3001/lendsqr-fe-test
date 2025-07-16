@@ -4,7 +4,7 @@ import style from "./users.module.css";
 import UserTable from "@/components/UserTable";
 import { tableHeaders } from "@/utils/data";
 import UserHeaderRow from "@/components/UserHeaderRow";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import FilterPanel from "@/components/FilterPanel";
 import UserTableRow from "@/components/UserTableRow";
 import { useUser } from "@/hooks/useUsers";
@@ -15,6 +15,8 @@ import { filterUsers } from "@/utils/filterUser";
 import UsersSkeleton from "./UsersSkeleton";
 import { sortUsers } from "@/utils/sortUser";
 import { useSearchParamsHook } from "@/hooks/useSearchParamHook";
+import { usePageTitle } from "@/hooks/usePageTitle";
+
 
 
 function User() {
@@ -22,24 +24,29 @@ function User() {
   const [filters, setFilters] = useState<Partial<UserTableValueType>>({});
   const { users, isPending } = useUser();
 
-  const filteredUsers = filterUsers(users,filters)
+  const filteredUsers = useMemo(
+    () => filterUsers(users, filters),
+    [users, filters]
+  );
 
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);
 
-const { getParam, setParam,setMultipleParams } = useSearchParamsHook();
+  const { getParam, setParam, setMultipleParams } = useSearchParamsHook();
 
-// console.log(params)
+  const sortKey = getParam("sortKey");
+  const sortOrder = (getParam("sortOrder") as "asc" | "desc") || "asc";
 
-const sortKey = getParam("sortKey");
-const sortOrder = (getParam("sortOrder") as "asc" | "desc") || "asc";
-
-
-const sortedUsers = sortUsers(filteredUsers,sortKey,sortOrder)
-// console.log(sortedUsers)
+  const sortedUsers = useMemo(
+    () => sortUsers(filteredUsers, sortKey, sortOrder),
+    [filteredUsers, sortKey, sortOrder]
+  );
 
   const totalUsers = sortedUsers?.length || 0;
   const totalPages = Math.ceil(totalUsers / pageSize);
+
+  
+ usePageTitle("Dashboard | Lendsqr")
 
   useEffect(() => {
     if (page > totalPages) {
@@ -47,28 +54,24 @@ const sortedUsers = sortUsers(filteredUsers,sortKey,sortOrder)
     }
   }, [pageSize, totalPages, page]);
 
-const handleSort = (key: string) => {
+  const handleSort = (key: string) => {
+    console.log(key, sortKey);
+    if (sortKey === key) {
+      setParam("sortOrder", sortOrder === "asc" ? "desc" : "asc");
+    } else {
+      setMultipleParams({ sortKey: key, sortOrder: "asc" });
+    }
+  };
 
-  console.log(key,sortKey)
-  if (sortKey === key) {
-    setParam("sortOrder", sortOrder === "asc" ? "desc" : "asc");
-  } else {
-  setMultipleParams({ sortKey: key, sortOrder: "asc" });
-  }
-};
+  const paginatedUsers = useMemo(() => {
+    const start = (page - 1) * pageSize;
+    const end = start + pageSize;
+    return sortedUsers.slice(start, end);
+  }, [sortedUsers, page, pageSize]);
 
+  const cards = useMemo(() => getUserCards(sortedUsers), [sortedUsers]);
 
-  // if (!data) return <p>no data</p>;
-
-  //woek on loading
-  if (isPending) return <UsersSkeleton/>;
-
-
-  const startIdx = (page - 1) * pageSize;
-  const endIdx = startIdx + pageSize;
-  const paginatedUsers = sortedUsers.slice(startIdx, endIdx);
-
-  const cards = getUserCards(filteredUsers || []);
+  if (isPending) return <UsersSkeleton />;
 
   return (
     <>
@@ -89,10 +92,9 @@ const handleSort = (key: string) => {
                 item={item}
                 i={i}
                 onFilterClick={() => setIsFilterOpen(true)}
-                 onSortClick={() => handleSort(item)}
+                onSortClick={() => handleSort(item)}
               />
             )}
-            
           />
 
           <UserTable.Body

@@ -11,7 +11,7 @@
   overflow-y: auto;
   scrollbar-width: none;
 
-  // Hide on small screens (mobile)
+
   @media (max-width: 1100px) {
     display: none;
   }

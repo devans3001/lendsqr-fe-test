@@ -2,20 +2,20 @@
 @use "../base/panel";
 
 .filter-panel {
-@include panel.slide-panel(right);
+  @include panel.slide-panel(right);
 
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     border-bottom: 1px solid #eee;
   }
 
   &__title {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #213F7D;
+    color: #213f7d;
     // margin: 0;
   }
 
@@ -23,25 +23,24 @@
     background: none;
     border: none;
     cursor: pointer;
-    color: #545F7D;
+    color: #545f7d;
     font-size: 1.25rem;
     padding: 0.5rem;
 
     &:hover {
-      color: #213F7D;
+      color: #213f7d;
     }
   }
 
-  form{
+  form {
     flex: 1;
-     display: flex;
-  flex-direction: column;
-  // justify-content: end;
-  // min-height: 100%;
-  // background: #000;
-  // color: #fff;
-
-      }
+    display: flex;
+    flex-direction: column;
+    // justify-content: end;
+    // min-height: 100%;
+    // background: #000;
+    // color: #fff;
+  }
 
   &__content {
     flex: 1;
@@ -52,49 +51,48 @@
     // overflow-y: auto;
     // scrollbar-width: thin;
   }
-  
+
   &__form-group {
     // margin-bottom: 1.5rem;
-    
+
     label {
       display: block;
       margin-bottom: 0.5rem;
       font-size: 0.875rem;
-      color: #545F7D;
+      color: #545f7d;
       font-weight: 500;
     }
-    
-    input, select {
+
+    input,
+    select {
       width: 100%;
       padding: 0.75em 1em;
       border: 1px solid #21407d25;
       border-radius: 48x;
       font-size: 0.875rem;
-      color: #545F7D;
+      color: #545f7d;
       transition: border-color 0.2s;
       background-color: #fff;
       // appearance: none;
-      
-      
+
       &:focus {
         outline: none;
-        border-color: #39CDCC;
+        border-color: #39cdcc;
         box-shadow: 0 0 0 2px rgba(57, 205, 204, 0.2);
       }
-      
+
       &::placeholder {
         color: #aaa;
       }
     }
   }
-  
-  
+
   &__actions {
     display: flex;
     gap: 1rem;
     padding: 1.5rem;
     border-top: 1px solid #eee;
-    
+
     button {
       flex: 1;
       font-family: "Work Sans SemiBold";
@@ -103,24 +101,24 @@
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s;
-      
+
       &:first-child {
-        border: 1px solid #545F7D;
+        border: 1px solid #545f7d;
         background: white;
-        color: #545F7D;
-        
+        color: #545f7d;
+
         &:hover {
           background: #f5f5f5;
         }
       }
-      
+
       &:last-child {
-        background: #39CDCC;
-        border: 1px solid #39CDCC;
+        background: #39cdcc;
+        border: 1px solid #39cdcc;
         color: white;
-        
+
         &:hover {
-          background: darken(#39CDCC, 5%);
+          background: darken(#39cdcc, 5%);
         }
       }
     }

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-
+//https://dev-shelf.vercel.app/docs/snippets/react-hooks
 
 export function useLocalStorageState<T>(initialState: T, key: string): [T, (value: T | ((prevValue: T) => T)) => void] {
   const [value, setValue] = useState<T>(() => {

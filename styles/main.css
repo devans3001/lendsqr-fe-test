@@ -41,7 +41,7 @@
 .loading-container .loading-text-content .loading-progress-indicator .loading-progress-bar {
   height: 100%;
   width: 0;
-  background-color: #3498db;
+  background-color: #39CDCC;
   animation: loading-progress 2s ease-in-out infinite;
 }
 
@@ -136,6 +136,11 @@
   flex-direction: row;
   position: relative;
   padding: 2rem 1.5rem;
+}
+.loginContainer .formContainer .error {
+  color: red !important;
+  font-size: 0.8em;
+  margin-top: 0.3em;
 }
 .loginContainer .formContainer .login-logo {
   position: absolute;
@@ -510,18 +515,18 @@
 .filter-panel__title {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #213F7D;
+  color: #213f7d;
 }
 .filter-panel__close-btn {
   background: none;
   border: none;
   cursor: pointer;
-  color: #545F7D;
+  color: #545f7d;
   font-size: 1.25rem;
   padding: 0.5rem;
 }
 .filter-panel__close-btn:hover {
-  color: #213F7D;
+  color: #213f7d;
 }
 .filter-panel form {
   flex: 1;
@@ -539,28 +544,31 @@
   display: block;
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
-  color: #545F7D;
+  color: #545f7d;
   font-weight: 500;
 }
-.filter-panel__form-group input, .filter-panel__form-group select {
+.filter-panel__form-group input,
+.filter-panel__form-group select {
   width: 100%;
   padding: 0.75em 1em;
   border: 1px solid rgba(33, 64, 125, 0.1450980392);
   border-radius: 48x;
   font-size: 0.875rem;
-  color: #545F7D;
+  color: #545f7d;
   transition: border-color 0.2s;
   background-color: #fff;
 }
-.filter-panel__form-group input:focus, .filter-panel__form-group select:focus {
+.filter-panel__form-group input:focus,
+.filter-panel__form-group select:focus {
   outline: none;
-  border-color: #39CDCC;
+  border-color: #39cdcc;
   box-shadow: 0 0 0 2px rgba(57, 205, 204, 0.2);
 }
 .filter-panel__form-group input::-moz-placeholder, .filter-panel__form-group select::-moz-placeholder {
   color: #aaa;
 }
-.filter-panel__form-group input::placeholder, .filter-panel__form-group select::placeholder {
+.filter-panel__form-group input::placeholder,
+.filter-panel__form-group select::placeholder {
   color: #aaa;
 }
 .filter-panel__actions {
@@ -579,16 +587,16 @@
   transition: all 0.2s;
 }
 .filter-panel__actions button:first-child {
-  border: 1px solid #545F7D;
+  border: 1px solid #545f7d;
   background: white;
-  color: #545F7D;
+  color: #545f7d;
 }
 .filter-panel__actions button:first-child:hover {
   background: #f5f5f5;
 }
 .filter-panel__actions button:last-child {
-  background: #39CDCC;
-  border: 1px solid #39CDCC;
+  background: #39cdcc;
+  border: 1px solid #39cdcc;
   color: white;
 }
 .filter-panel__actions button:last-child:hover {
@@ -630,6 +638,8 @@
   padding: 1em 0.75em;
   color: #545f7d;
   font-weight: 600;
+}
+.userTableHead th span {
   cursor: pointer;
 }
 .userTableHead th:hover {

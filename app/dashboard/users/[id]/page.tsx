@@ -7,6 +7,7 @@ import UserDetails from "./userDetails";
 import ProfileSummary from "./userSummary";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { User } from "@/types/type";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 function UserPage() {
   const [user] = useLocalStorageState<User | null>(null, `selectedUser`);
@@ -16,6 +17,8 @@ function UserPage() {
   const goBack = () => {
     router.push("/dashboard/users");
   };
+
+   usePageTitle("User | Lendsqr")
 
   return (
     <div className={style.container}>

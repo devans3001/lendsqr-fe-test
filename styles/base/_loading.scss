@@ -1,4 +1,3 @@
-// Loading Component Styles
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -46,7 +45,7 @@
       .loading-progress-bar {
         height: 100%;
         width: 0;
-        background-color: #3498db;
+        background-color: #39CDCC;
         animation: loading-progress 2s ease-in-out infinite;
       }
     }

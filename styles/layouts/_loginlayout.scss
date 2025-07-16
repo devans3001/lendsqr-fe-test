@@ -18,6 +18,12 @@
     position: relative;
     padding: 2rem 1.5rem;
 
+    .error{
+      color: red!important;
+      font-size: .8em;
+      margin-top: .3em;
+    }
+
     .login-logo{
          position: absolute;
         top: 5%;

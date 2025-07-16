@@ -1,4 +1,5 @@
 "use client";
+
 import Logo from "@/components/logo";
 import Image from "next/image";
 import login from "../../public/login.png";
@@ -9,97 +10,108 @@ import { LoginDetails } from "@/types/type";
 import { hashPassword } from "@/utils/helper";
 import { ClipLoader } from "react-spinners";
 import { useViewport } from "@/hooks/useViewport";
-import { toast, ToastContainer } from "react-toast";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toast";
+import { usePageTitle } from "@/hooks/usePageTitle";
 
 function Login() {
   const router = useRouter();
-
   const { md } = useViewport();
-  const [details, setDetails] = useState<LoginDetails>({
-    email: "",
-    password: "",
-  });
-  const [isLoggingIn, setIsLoggingIn] = useState<boolean>(false);
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [user, setUser] = useLocalStorageState<LoginDetails | null>(null, "user");
+  const [isVisible, setIsVisible] = useState(false);
 
-  const [user, setUser] = useLocalStorageState<LoginDetails>(details, "user");
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<LoginDetails>({
+    defaultValues: { email: "", password: "" },
+  });
 
   useEffect(() => {
-    // to prevent another login
     if (user) router.push("/dashboard/users");
-  }, [user]);
+  }, [user, router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  usePageTitle("Sign In | Lendsqr")
+
+  const onSubmit = async (data: LoginDetails) => {
     setIsLoggingIn(true);
 
-    const hashedPassword = await hashPassword(details.password);
+    if (!data.email.includes("@") || data.password.length < 6) {
+      toast.error("Invalid email or password. Please try again.");
+      setIsLoggingIn(false);
+      return;
+    }
+
+    const hashedPassword = await hashPassword(data.password);
 
     const newUser: LoginDetails = {
-      email: details.email,
+      email: data.email,
       password: hashedPassword,
     };
 
     setTimeout(() => {
       setUser(newUser);
+      toast.success("Welcome back 😁");
       router.push("/dashboard/users");
     }, 800);
-    toast.success("Welcom back 😁")
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setDetails((val) => ({ ...val, [name]: value }));
-  };
-
-  const [isVisible, setIsVisible] = useState<boolean>(false);
-
-  const isEmpty = !details.email && !details.password;
+  const isEmpty = !watch("email") || !watch("password");
 
   return (
     <>
       <div className="loginContainer">
-        {/* logoContainer  */}
+        {/* logoContainer */}
         <div className="logoContainer">
           <Logo classname="login-logo" />
-
           <div className="logoImage">
             <Image src={login} alt="lendsqr login image" fill />
           </div>
         </div>
 
-        {/* formContainer  */}
+        {/* formContainer */}
         <div className="formContainer">
           {!md && <Logo classname="login-logo" />}
-
           <div className="formContent">
             <h1>Welcome!</h1>
             <p>Enter details to login</p>
 
-            <form onSubmit={handleSubmit}>
-              <input
-                type="text"
-                name="email"
-                value={details.email}
-                onChange={handleInputChange}
-                placeholder="Email"
-              />
-
+            <form onSubmit={handleSubmit(onSubmit)}>
               <label htmlFor="">
+
+              <input
+                type="email"
+                placeholder="Email"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                    message: "Invalid email format",
+                  },
+                })}
+              />
+              {errors.email && <p className="error">{errors.email.message}</p>}
+                    </label>
+
+              <label>
                 <input
                   type={isVisible ? "text" : "password"}
-                  name="password"
-                  value={details.password}
-                  onChange={handleInputChange}
                   placeholder="Password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
                 />
                 <span onClick={() => setIsVisible(!isVisible)}>
-                  {!isVisible ? "show" : "hide"}
+                  {isVisible ? "Hide" : "Show"}
                 </span>
+              {errors.password && <p className="error">{errors.password.message}</p>}
               </label>
 
               <p>Forgot password?</p>
 
-              <button type="submit" disabled={isLoggingIn || isEmpty}>
+              <button type="submit" disabled={isLoggingIn}>
                 {isLoggingIn ? (
                   <ClipLoader size={20} color="#fff" loading={isLoggingIn} />
                 ) : (
@@ -110,7 +122,7 @@ function Login() {
           </div>
         </div>
       </div>
-      <ToastContainer position="top-center"/>
+
     </>
   );
 }

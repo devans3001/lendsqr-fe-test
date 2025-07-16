@@ -1,5 +1,5 @@
 import { useEffect, RefObject } from 'react'
-
+//https://dev-shelf.vercel.app/docs/snippets/react-hooks
 
 export function useClickOutside(ref: RefObject<HTMLElement | null>, callback: () => void): void {
   useEffect(() => {

@@ -33,7 +33,10 @@
     padding: 1em 0.75em;
     color: #545f7d;
     font-weight: 600;
-    cursor: pointer;
+    span{
+
+      cursor: pointer;
+    }
     // display: flex;
     //  align-items: center;
     // gap: 4px;
