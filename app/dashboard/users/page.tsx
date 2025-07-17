@@ -17,7 +17,18 @@ import { sortUsers } from "@/utils/sortUser";
 import { useSearchParamsHook } from "@/hooks/useSearchParamHook";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
-
+/**
+ * Renders the Users dashboard page, providing user listing, filtering, sorting, and pagination functionalities.
+ *
+ * - Fetches user data via the `useUser` hook.
+ * - Allows filtering users using a filter panel.
+ * - Supports sorting by table headers, with sort state persisted in URL search params.
+ * - Displays user summary cards and a paginated, sortable user table.
+ * - Handles loading state with a skeleton component.
+ * - Updates page title on mount.
+ *
+ *
+ */
 
 function User() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -45,8 +56,7 @@ function User() {
   const totalUsers = sortedUsers?.length || 0;
   const totalPages = Math.ceil(totalUsers / pageSize);
 
-  
- usePageTitle("Dashboard | Lendsqr")
+  usePageTitle("Dashboard | Lendsqr");
 
   useEffect(() => {
     if (page > totalPages) {
@@ -67,7 +77,7 @@ function User() {
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
     return sortedUsers.slice(start, end);
-  }, [sortedUsers, page, pageSize]);
+  }, [sortedUsers, page, pageSize, sortKey, sortOrder]);
 
   const cards = useMemo(() => getUserCards(sortedUsers), [sortedUsers]);
 

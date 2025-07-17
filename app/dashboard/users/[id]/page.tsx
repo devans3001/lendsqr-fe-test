@@ -9,6 +9,28 @@ import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { User } from "@/types/type";
 import { usePageTitle } from "@/hooks/usePageTitle";
 
+/**
+ * Renders the user details page within the dashboard.
+ *
+ * This component displays detailed information about a selected user, including their basic info,
+ * profile summary, and provides actions to blacklist or activate the user. It also includes navigation
+ * functionality to return to the users list.
+ *
+ * @component
+ * @returns {JSX.Element} The user details page layout.
+ *
+ * @remarks
+ * - Retrieves the selected user from local storage using the `useLocalStorageState` hook.
+ * - Sets the page title to "User | Lendsqr" via the `usePageTitle` hook.
+ * - Provides a "Back to Users" link that navigates to the users list using Next.js router.
+ * - Displays user details and profile summary using `UserDetails` and `ProfileSummary` components.
+ * - Includes buttons for blacklisting and activating the user (functionality not implemented in this snippet).
+ *
+ * @example
+ * ```tsx
+ * <UserPage />
+ * ```
+ */
 function UserPage() {
   const [user] = useLocalStorageState<User | null>(null, `selectedUser`);
 
@@ -36,10 +58,8 @@ function UserPage() {
         </div>
       </header>
 
-      {/* BASIC INFO  AND TABS*/}
       <UserDetails user={user}/>
 
-      {/* PROFILE SUMMARY  */}
       <ProfileSummary user={user} />
     </div>
   );

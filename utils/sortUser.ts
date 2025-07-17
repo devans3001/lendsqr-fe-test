@@ -2,7 +2,7 @@ import { User } from "@/types/type";
 
 
 export const sortUsers = (filteredUsers:User[], sortKey:string | null, sortOrder:"asc" | "desc") => {
-  const sortedUsers = [...filteredUsers].sort((a, b) => {
+  const sortedUsers = filteredUsers.sort((a, b) => {
     if (!sortKey) return 0;
 
     const key = sortKey.toLowerCase();

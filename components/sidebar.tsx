@@ -6,7 +6,7 @@ import { BsHouseDoor } from "react-icons/bs";
 import { IoClose } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Logout from "./auth/logout";
+import Logout from "./logout";
 import { sideMenu } from "@/utils/sidebarData";
 import { MenuItem } from "@/types/type";
 import Logo from "./logo";

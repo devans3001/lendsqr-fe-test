@@ -1,10 +1,9 @@
-
-
-'use client';
+"use client";
 
 import { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
 
 type ProvidersProps = {
   children: ReactNode;
@@ -30,6 +29,18 @@ export function Providers({ children }: ProvidersProps) {
     <QueryClientProvider client={queryClient}>
       {children}
       {/* <ReactQueryDevtools initialIsOpen={false} buttonPosition="top-left"/> */}
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </QueryClientProvider>
   );
 }

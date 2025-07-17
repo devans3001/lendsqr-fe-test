@@ -72,6 +72,7 @@ export function Pagination({
         <button
           onClick={() => onPageChange(Math.max(1, currentPage - 1))}
           disabled={currentPage === 1}
+          role="prev"
         >
          <MdKeyboardArrowLeft size={18}/>
         </button>
@@ -93,6 +94,8 @@ export function Pagination({
         <button
           onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
           disabled={currentPage === totalPages}
+          role="next"
+
         >
           <MdKeyboardArrowRight size={18}/>
         </button>

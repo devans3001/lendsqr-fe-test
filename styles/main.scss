@@ -55,3 +55,19 @@ button{
       pointer-events: all;
     }
   }
+
+
+.logout {
+  display: flex;
+  align-items: center;
+  color: variables.$lendsqrBlueSecondary;
+  cursor: pointer;
+  margin: 1em 0;
+  padding: 0.5em 1em;
+  border-top: 1px solid rgba(128, 128, 128, 0.164);
+}
+
+.version {
+  color: variables.$lendsqrBlueSecondary;
+  padding: 0.5em 1em;
+}

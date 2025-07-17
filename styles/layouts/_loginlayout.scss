@@ -58,6 +58,10 @@
           width: 100%;
           position: relative;
 
+          div{
+            position: relative;
+          }
+
           span {
             cursor: pointer;
             text-transform: uppercase;
@@ -65,7 +69,7 @@
             position: absolute;
             top: 50%;
             right: 4%;
-            transform: translate(4%, -50%);
+            transform: translate(-4%, -50%);
             color: variables.$lendsqrGreen;
           }
         }

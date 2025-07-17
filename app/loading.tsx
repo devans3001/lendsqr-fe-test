@@ -1,6 +1,7 @@
 "use client"
 import val from "@/public/bankloan.json";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import { ClipLoader } from "react-spinners";
 
 const Loading = () => {
   return (
@@ -17,9 +18,8 @@ const Loading = () => {
       <div className="loading-text-content">
         <h2 className="loading-title">Processing Your Request</h2>
         <p className="loading-subtitle">Please wait while we secure your loan details...</p>
-        <div className="loading-progress-indicator">
-          <div className="loading-progress-bar"></div>
-        </div>
+       
+       <ClipLoader/>
       </div>
     </div>
   );

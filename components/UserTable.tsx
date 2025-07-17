@@ -50,8 +50,17 @@ function Body<T>({
   data: T[];
   render: (user: T) => ReactNode;
 }) {
-  if (!data.length)
-    return <p className="userTableEmpty">No data to show at the moment</p>;
+ if (!data.length) {
+    return (
+      <tbody className="userTableBody">
+        <tr>
+          <td colSpan={100} className="userTableEmpty">
+            No data to show at the moment
+          </td>
+        </tr>
+      </tbody>
+    );
+  }
 
   return <tbody className="userTableBody">{data?.map(render)}</tbody>;
 }

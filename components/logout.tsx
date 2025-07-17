@@ -4,14 +4,13 @@ import { LoginDetails } from "@/types/type";
 import { LogOut } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import style from "./logout.module.css";
 import { ClipLoader } from "react-spinners";
 import { toast } from "react-toast";
 
 function Logout() {
   const router = useRouter();
   const [isLoading, setIsloading] = useState<boolean>(false);
-  const [user, setUser] = useLocalStorageState<LoginDetails | null>(
+  const [, setUser] = useLocalStorageState<LoginDetails | null>(
     null,
     "user"
   );
@@ -29,7 +28,7 @@ function Logout() {
 
   return (
     <>
-      <div className={style.logout} onClick={handleLogout}>
+      <div className={"logout"} onClick={handleLogout}>
         <LogOut />
         <span>
           {isLoading ? (
@@ -39,7 +38,7 @@ function Logout() {
           )}
         </span>
       </div>
-      <span className={style.version}>v1.2.0</span>
+      <span className={"version"}>v1.2.0</span>
     </>
   );
 }

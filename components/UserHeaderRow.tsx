@@ -15,7 +15,7 @@ function UserHeaderRow({ item, i, onFilterClick,onSortClick }: UserHeaderRowProp
     <th>
       <div>
         <span  onClick={onSortClick}>{item}</span>
-        {!isLast && <MdFilterList size={20} onClick={onFilterClick} />}
+        {!isLast && <MdFilterList size={20} onClick={onFilterClick} title="Filter Icon"/>}
       </div>
     </th>
   );

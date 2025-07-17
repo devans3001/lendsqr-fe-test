@@ -12,7 +12,7 @@ function UsersSkeleton() {
       <div className={style.userCards}>
         {Array.from({ length: 4 }).map((_, cellIdx) => (
           <div key={cellIdx} className={style.card}>
-            <Skeleton width={"200px"} height={"100px"} />
+            <Skeleton width={"100%"} height={"100px"} />
           </div>
         ))}
       </div>
