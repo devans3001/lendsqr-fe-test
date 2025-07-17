@@ -67,7 +67,7 @@ yarn test
 🛠 Installation
 
 ```bash
-git clone https://github.com/lendsqr-fe-test.git
+git clone [https://github.com/devans3001/lendsqr-fe-test.git](https://github.com/devans3001/lendsqr-fe-test)
 cd lendsqr-fe-test
 npm install
 npm run dev
