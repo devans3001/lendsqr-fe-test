@@ -31,7 +31,6 @@ export default function ProfileSummary({ user,loading }: { user: User | null,loa
     if(!user) return null
 
   const { profile, education, socials, guarantors } = user;
-  console.log(guarantors);
 
   return (
     <div className={styles.profileSummary}>

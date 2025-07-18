@@ -18,7 +18,6 @@ function UserNavWidget() {
   useEffect(() => {
     if (user) setName(user.email);
   }, [user]);
-  // console.log(name);
 
   return (
     <div className="ending">

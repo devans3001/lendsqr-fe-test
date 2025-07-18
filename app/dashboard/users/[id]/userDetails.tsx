@@ -65,7 +65,6 @@ function UserDetails({ user,loading }: { user: User | null,loading:boolean }) {
       <div className={style.tabs}>
         {tabs.map((ele) => {
           const txt = ele.toLowerCase().split(" ").join("-");
-        //   console.log(txt);
           const isActive = txt === tab;
           return (
             <p

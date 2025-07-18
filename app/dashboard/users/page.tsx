@@ -65,7 +65,6 @@ function User() {
   }, [pageSize, totalPages, page]);
 
   const handleSort = (key: string) => {
-    console.log(key, sortKey);
     if (sortKey === key) {
       setParam("sortOrder", sortOrder === "asc" ? "desc" : "asc");
     } else {

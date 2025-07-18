@@ -12,17 +12,16 @@ import { MenuItem } from "@/types/type";
 import Logo from "./logo";
 import { useClickOutside } from "@/hooks/useOnClickOutside";
 
-
 export default function Sidebar({
   isMobile = false,
   isOpen = false,
   setIsOpen,
-  heightStyle
+  heightStyle,
 }: {
   isMobile?: boolean;
   isOpen?: boolean;
   setIsOpen?: (val: boolean) => void;
-   heightStyle?: React.CSSProperties;
+  heightStyle?: React.CSSProperties;
 }) {
   const pathname = usePathname();
   const panelRef = useRef<HTMLDivElement>(null);
@@ -35,18 +34,16 @@ export default function Sidebar({
     <>
       {isMobile && (
         <div
-          className={`panel_overlay ${
-            isOpen ? "panel_overlay--active" : ""
-          }`}
+          className={`panel_overlay ${isOpen ? "panel_overlay--active" : ""}`}
         />
       )}
 
       <div
         ref={panelRef}
-        className={`sideContainer ${
-          isMobile ? "side_panel" : ""
-        } ${isMobile && isOpen ? "side_panel--open" : ""}`}
-        style={!isMobile ? heightStyle : undefined} 
+        className={`sideContainer ${isMobile ? "side_panel" : ""} ${
+          isMobile && isOpen ? "side_panel--open" : ""
+        }`}
+        style={!isMobile ? heightStyle : undefined}
       >
         {isMobile && <Logo classname="side_panel--logo" />}
 
@@ -65,7 +62,13 @@ export default function Sidebar({
         </p>
 
         {sideMenu.map((item) => (
-          <SideItem item={item} key={item.title} pathname={pathname} />
+          <SideItem
+            item={item}
+            key={item.title}
+            pathname={pathname}
+            isMobile={isMobile}
+            setIsOpen={setIsOpen}
+          />
         ))}
 
         <Logout />
@@ -84,8 +87,22 @@ export default function Sidebar({
   );
 }
 
-function SideItem({ item, pathname }: { item: MenuItem; pathname: string }) {
+function SideItem({
+  item,
+  pathname,
+  isMobile,
+  setIsOpen
+}: {
+  item: MenuItem;
+  pathname: string;
+  isMobile?: boolean;
+  setIsOpen?:(val: boolean) => void
+}) {
   const { title, subItems } = item;
+
+  const handleClosePanel = () => {
+    if (item && isMobile && setIsOpen) setIsOpen(false);
+  }
   return (
     <div style={{ marginTop: "1.5em" }}>
       <h4 className="sideItem">{title}</h4>
@@ -93,6 +110,7 @@ function SideItem({ item, pathname }: { item: MenuItem; pathname: string }) {
         <Link
           href={`/dashboard${ele.path}`}
           key={ele.title}
+          onClick={handleClosePanel}
           className={`sideItem ${
             pathname.includes(ele.path ?? "") ? "sideActive" : ""
           } `}

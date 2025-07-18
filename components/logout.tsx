@@ -14,7 +14,6 @@ function Logout() {
     null,
     "user"
   );
-  // console.log(user )
 
   const handleLogout = () => {
     setIsloading(true);

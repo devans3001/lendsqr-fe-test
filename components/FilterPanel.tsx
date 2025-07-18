@@ -33,19 +33,11 @@ const FilterPanel = ({ isOpen, setIsOpen, onFilter }: FilterPanelProps) => {
   const submitFilter = (data: UserTableValueType) => {
     if (onFilter) onFilter(data);
 
-    // console.log("from",data)
     setIsOpen(false);
   };
 
   return (
     <>
-      {/* <button 
-        onClick={() => setIsOpen(true)}
-        className="filter-trigger"
-      >
-        <FiFilter />
-        <span>Filter</span>
-      </button> */}
 
       <div
         className={`panel_overlay ${isOpen ? "panel_overlay--active" : ""}`}
