@@ -8,6 +8,7 @@ import ProfileSummary from "./userSummary";
 import { useLocalStorageState } from "@/hooks/useLocalStorage";
 import { User } from "@/types/type";
 import { usePageTitle } from "@/hooks/usePageTitle";
+import { useEffect, useState } from "react";
 
 /**
  * Renders the user details page within the dashboard.
@@ -32,7 +33,17 @@ import { usePageTitle } from "@/hooks/usePageTitle";
  * ```
  */
 function UserPage() {
-  const [user] = useLocalStorageState<User | null>(null, `selectedUser`);
+  const [userStorage] = useLocalStorageState<User | null>(null, `selectedUser`);
+
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (userStorage) {
+      setUser(userStorage);
+    }
+    setLoading(false);
+  }, [userStorage]);
 
   const router = useRouter();
 
@@ -40,7 +51,9 @@ function UserPage() {
     router.push("/dashboard/users");
   };
 
-   usePageTitle("User | Lendsqr")
+  usePageTitle("User | Lendsqr");
+
+  //  if(loading) return <p>loading</p>
 
   return (
     <div className={style.container}>
@@ -58,9 +71,9 @@ function UserPage() {
         </div>
       </header>
 
-      <UserDetails user={user}/>
+      <UserDetails user={user} loading={loading} />
 
-      <ProfileSummary user={user} />
+      <ProfileSummary user={user} loading={loading} />
     </div>
   );
 }

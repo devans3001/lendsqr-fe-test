@@ -4,8 +4,11 @@ import styles from "./user.module.css";
 import { User } from "@/types/type";
 import Skeleton from "react-loading-skeleton";
 
-export default function ProfileSummary({ user }: { user: User | null }) {
-  if (!user)
+export default function ProfileSummary({ user,loading }: { user: User | null,loading:boolean }) {
+ 
+
+  
+  if (loading)
     return (
       <div className={styles.profileSummary}>
         {Array.from({ length: 3 }, (_, i) => (
@@ -24,6 +27,8 @@ export default function ProfileSummary({ user }: { user: User | null }) {
         ))}
       </div>
     );
+
+    if(!user) return null
 
   const { profile, education, socials, guarantors } = user;
   console.log(guarantors);
@@ -110,7 +115,7 @@ export default function ProfileSummary({ user }: { user: User | null }) {
   );
 }
 
-function InfoItem({ label, value }: { label: string; value: string }) {
+function InfoItem({label, value }: { label: string; value: string }) {
   return (
     <div className={styles.infoItem}>
       <p className={styles.label}>{label}</p>

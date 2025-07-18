@@ -6,7 +6,7 @@ import { useSearchParamsHook } from "@/hooks/useSearchParamHook";
 import { User } from "@/types/type";
 import Skeleton from "react-loading-skeleton";
 
-function UserDetails({ user }: { user: User | null }) {
+function UserDetails({ user,loading }: { user: User | null,loading:boolean }) {
 
 
   const { getParam, setParam } = useSearchParamsHook();
@@ -26,7 +26,9 @@ function UserDetails({ user }: { user: User | null }) {
     "App and System",
   ];
 
-  if(!user) return <section>
+  if(!user) return null
+  
+  if(loading) return <section>
     <div className={style.skeleton}>
       <Skeleton height={"50px"} width={"50px"} circle={true}/>
       <Skeleton height={30}/>
